@@ -32,13 +32,15 @@
 
 </head>
 <body>
-  <timer data=></timer>
+  <timer></timer>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/3.6.3/riot+compiler.js'></script>
   <script type='riot/tag' data-src='./timer.tag'></script>
-  <script>riot.mount('*', {
+  <script>
+  riot.mount('*', {
     link: 'https://medium.com/@raulk/if-youre-a-startup-you-should-not-use-react-reflecting-on-the-bsd-patents-license-b049d4a67dd2',
     title: 'If you’re a startup, you should not use React',
     date: new Date('2017-08-17')
-  })</script>
+  })
+  </script>
 </body>
 </html>
