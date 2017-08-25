@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1'>
   <title>Days Since Last Javascript Drama</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="content-language" content="en">
-  <meta name="description" content="Timer to track how many days passed since the latest Javascript drama">
-  <meta name="author" content="Gianluca Guarini">
-  <meta name="publisher" content="Gianluca Guarini">
-  <meta name="copyright" content="Gianluca Guarini">
-  <meta name="company" content="Gianluca Guarini">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Days Since Last Javascript Drama">
-  <meta property="og:description" content="Timer to track how many days passed since the latest Javascript drama">
-  <meta property="og:image" content="img.png">
-  <meta property="og:image:width" content="500">
-  <meta property="og:image:height" content="700">
-
-
-  <meta property="og:site_name" content="Days Since Last Javascript Drama">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="http://gianlucaguarini.com/days-since-last-javascript-drama/">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <meta name='content-language' content='en'>
+  <meta name='description' content='Timer to track how many days passed since the latest Javascript drama'>
+  <meta name='author' content='Gianluca Guarini'>
+  <meta name='publisher' content='Gianluca Guarini'>
+  <meta name='copyright' content='Gianluca Guarini'>
+  <meta name='company' content='Gianluca Guarini'>
+  <meta name='robots' content='index, follow'>
+  <meta property='og:title' content='Days Since Last Javascript Drama'>
+  <meta property='og:description' content='Timer to track how many days passed since the latest Javascript drama'>
+  <meta property='og:image' content='img.png'>
+  <meta property='og:image:width' content='500'>
+  <meta property='og:image:height' content='700'>
+  <meta property='og:site_name' content='Days Since Last Javascript Drama'>
+  <meta property='og:type' content='website'>
+  <meta property='og:url' content='http://gianlucaguarini.com/days-since-last-javascript-drama/'>
 
   <style>
     body {
+      background: #fff9fa;
       margin: 0;
+      overflow-x: hidden;
     }
   </style>
 
 </head>
 <body>
-  <timer></timer>
+  <app/>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/3.6.3/riot+compiler.js'></script>
+  <script src='https://cdn.rawgit.com/riot/animore/master/riot-animore.js'></script>
+  <script type='riot/tag' data-src='./app.tag'></script>
+  <script type='riot/tag' data-src='./fork.tag'></script>
+  <script type='riot/tag' data-src='./loader.tag'></script>
   <script type='riot/tag' data-src='./timer.tag'></script>
-  <script>
-  riot.mount('*', {
-    link: 'https://medium.com/@raulk/if-youre-a-startup-you-should-not-use-react-reflecting-on-the-bsd-patents-license-b049d4a67dd2',
-    title: 'If you’re a startup, you should not use React',
-    date: new Date('2017-08-17')
-  })
-  </script>
+  <script>riot.mount('app')</script>
 </body>
 </html>
