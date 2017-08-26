@@ -1,41 +1,10 @@
 <app>
   <fork/>
-  <button
-    data-is='animore'
-    if={ !isLoading }
-    disabled={ index === 0 }
-    onclick={ prev }
-    mount={{
-      translateX: [-100, 0]
-    }}
-    title='Previous Drama'
-    class='prev'
-  >&lt;</button>
-
-  <button
-    data-is='animore'
-    if={ !isLoading }
-    mount={{
-      translateX: [100, 0]
-    }}
-    disabled={ dramas && index === dramas.length - 1 }
-    onclick={ next }
-    title='Next Drama'
-    class='next'
-  >&gt;</button>
-
-  <div
+  <section
     class='timer'
     if={!isLoading && event}
     data-is='animore'
-    update={{
-      easing: 'easeOutQuad',
-      duration: 250,
-      scale: [1, 0.92, 1]
-    }}
     mount={{
-      easing: 'easeInOutQuad',
-      duration: 200,
       scale: [0, 1]
     }}>
     <timer
@@ -43,8 +12,7 @@
       title={event.title}
       link={event.link}
       />
-  </div>
-
+  </section>
   <div
     class='loader'
     if={isLoading}
@@ -55,33 +23,34 @@
     }}>
     <loader/>
   </div>
+  <section class='old-dramas' if={dramas}>
+    <h2>Older dramas</h2>
+    <ul>
+      <li
+        data-is='animore'
+        each={drama, i in dramas}
+        mount={{
+          delay: i * 100,
+          translateX: [-100, 0],
+        }}
+        if={i !== 0}
+      >
+        <h3><a href={drama.link}>{drama.title}</a></h3><date>{new Date(drama.date).toLocaleDateString()}</date>
+      </li>
+    </ul>
+  </section>
   <script>
     load() {
-      fetch('./dramas.json')
+      fetch('./dramas.json?8')
         .then(data => data.json())
         .then(this.ready)
     }
 
     ready(dramas) {
-      this.index = 0
       this.dramas = dramas
       this.isLoading = false
-      this.changeDrama()
+      this.event = this.dramas[0]
       this.update()
-    }
-
-    changeDrama() {
-      this.event = this.dramas[this.index]
-    }
-
-    next() {
-      this.index++
-      this.changeDrama()
-    }
-
-    prev() {
-      this.index--
-      this.changeDrama()
     }
 
     this.dramas = null
@@ -92,40 +61,30 @@
   </script>
   <style>
     :scope {
-      display: block;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      height: 100vh;
     }
 
-    .prev,
-    .next {
-      cursor: pointer;
-      z-index: 1;
+    a {
       color: #81505d;
-      position: absolute;
-      top: 50%;
-      height: 80px;
-      width: 80px;
-      margin-top: -40px;
-      background: none;
-      border: none;
-      line-height: 20px;
-      font-size: 3rem;
-      text-align: center;
+      font-family: Georgia;
+      font-weight: normal;
     }
 
-    .prev[disabled],
-    .next[disabled] {
-      opacity: 0.5;
-      cursor: default;
+    date {
+      color: #333;
+      font-family: Georgia;
+      font-style: oblique;
     }
 
-    .prev {
-      left: 0;
-    }
-
-    .next {
-      right: 0;
+    .timer {
+      flex: 0 0 100%;
+      display: flex;
+      min-height: 90vh;
     }
 
     .loader {
@@ -136,11 +95,32 @@
       margin: -40px 0 0 -20px;
     }
 
-    @media screen and (max-width: 34rem) {
-      .prev,
-      .next {
-        width: 40px;
-      }
+    .old-dramas {
+      flex: 0 1 100%;
+      max-width: 520px;
+      padding: 0 2rem;
+    }
+
+    .old-dramas h2 {
+      margin: 0;
+    }
+
+    .old-dramas > ul {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .old-dramas > ul > li {
+      display: flex;
+      margin: 0;
+      align-items: center;
+    }
+
+    .old-dramas > ul > li > h3 {
+      margin-right: 0.8rem;
     }
   </style>
 </app>

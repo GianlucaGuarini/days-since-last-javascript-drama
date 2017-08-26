@@ -2,7 +2,6 @@
   <time>{days}</time>
   <h1><a href={opts.link}>{opts.title}</a></h1>
   <date>{date.toLocaleDateString()}</date>
-  <small>Timer to track how many days passed since the latest Javascript drama</small>
   <script>
     this.date = null
     setDiff() {
@@ -15,45 +14,29 @@
   </script>
   <style>
     :scope {
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       width: 100%;
       padding: 2rem;
       box-sizing: border-box;
     }
 
     date {
-      color: #999;
-      font-family: Georgia;
-      font-style: oblique;
       margin: 0 0 1rem;
     }
 
     time {
-      color: #333;
-      font-size: 20rem;
-      font-weight: bold;
-    }
-
-    small {
-      color: #666;
-      text-align: center;
       display: inline-block;
-    }
-
-    a {
-      color: #81505d;
+      color: #333;
+      font-weight: bold;
+      font-size: 20rem;
     }
 
     h1 {
+      margin: 0 0 2rem;
       text-align: center;
-      font-family: Georgia;
-      font-weight: normal;
-      font-style:oblique;
     }
 
     @media screen and (max-width: 34rem) {
