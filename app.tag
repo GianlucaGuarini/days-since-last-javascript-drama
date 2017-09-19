@@ -117,6 +117,7 @@
       display: flex;
       margin: 0;
       align-items: center;
+      justify-content: space-between;
     }
 
     .old-dramas > ul > li > h3 {
