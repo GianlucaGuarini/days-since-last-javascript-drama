@@ -41,7 +41,7 @@
   </section>
   <script>
     load() {
-      fetch('./dramas.json?8')
+      fetch('./dramas.json?9')
         .then(data => data.json())
         .then(this.ready)
     }
